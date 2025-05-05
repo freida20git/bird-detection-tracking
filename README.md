@@ -2,7 +2,8 @@
 Bird(object) detection in images and tracking in videos using YOLO
 
 
-📁 Repository Contents
+📁 Repository Contents:
+
 Updated_birdsonly_training_detection.ipynb
 Jupyter notebook for training and validating the best-performing model on bird-only data.
 
