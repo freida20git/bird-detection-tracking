@@ -20,3 +20,7 @@ Hyperparameter Tuning:
 **tuning_tracker_params.ipynb**
 Experiments with 10 different hyperparameter configurations and all option combinations to identify optimal settings.
 
+**DATA:**
+data used could be found and downloaded: https://drive.google.com/drive/folders/1k42ZKG3CODvPaURgvAaTu9lUCB-XRrVZ?usp=sharing 
+as well as from Roboflow: 
+https://universe.roboflow.com/sky-sd2zq/bird_only-pt0bm/dataset/1
