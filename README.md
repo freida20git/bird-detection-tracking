@@ -11,6 +11,9 @@ notebook for training and validating the best-performing model on bird-only data
 Tracking:
 **Tracker.ipynb**
 Tracking implementation using the YOLOv11x model and our custom-trained model.
+**sort.py**
+Updated python code of sort based on the original with minor modifications to match Google Colab.
+Includes tracking from type DeepSORT, SORT, boTSORT and ByteTrack
 
 Tracking Metrics:
 **Tracking_metrics.ipynb**
