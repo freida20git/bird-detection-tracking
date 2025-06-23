@@ -6,50 +6,29 @@ This project explores bird detection and multi-object tracking (MOT) using YOLO 
 
 ## 🚀 How to Run the Project
 
-detailed notebook is in main_pipeline folder and it's a one line code!
+detailed notebook is in main_pipeline folder and it's a one line code:
+
 > main_ocsort(input_video_path, ocsort_output_path, model_pt_path)
+
 or
+
 >  main_sort(input_video_path, sort_output_path, model_pt_path)
 
-you'll get a beautiful tracked output like:
+Example output:
 ![image](https://github.com/user-attachments/assets/00cbdd1f-21a8-4c37-a38d-ecd121e940fb)
 
 ---
 
 ## 📁 Project Structure
 
-bird-detection-tracking/
-├── detection/                  # YOLO models, fine-tuning, and training notebooks
-│   ├── bestbirdsonly.pt
-│   ├── birds_training_detection.ipynb
-│
-├── tracking/                   # Tracking algorithm notebooks (OC-SORT, parameter tuning)
-│   ├── tracker.ipynb
-│   ├── func_ocsort.ipynb
-│   ├── track_and_count.ipynb
-│   ├── tuning_tracker_params.ipynb
-│
-├── main_pipeline/              # Scripts for running full detection + tracking pipeline
-│   ├── OcSORT_counter.py
-│   ├── sort_counter.py
-│   ├── VideoDrawings.py
-│   ├── UsageExample.ipynb
-│
-├── track_and_metric_func/      # Utility functions for tracking and evaluation
-│   ├── sort.py
-│   ├── func_ocsort.py
-│   ├── Tracking_metrics_functions.py
-│
-├── results/                    # Output notebooks, evaluation results, plots
-│   ├── Algorithms_inference_results.ipynb
-│   ├── Tracking_metrics.ipynb
-│   ├── model_on_videos.ipynb
-│   ├── results_tables.html
-│
-├── requirements.txt
-│
-└── README.md                   # Project overview, setup instructions, results summary
-
+This repository is organized as follows:
+Each directory serves a specific role:
+- `detection/`: Contains YOLOv11n training notebooks and model.
+- `tracking/`: Exploration and evaluation of tracking algorithms.
+- `main_pipeline/`: Scripts for combining detection and tracking into a unified user-friendly pipeline.
+- `track_and_metric_func/`: Helper functions used in pipelines and metric calculations.
+- `results/`: Outputs, plots, and metrics summaries from experiments.
+- `requirements.txt`: Python dependencies for the full pipeline.
 
 ---
 
@@ -176,8 +155,8 @@ Found in `track_and_metric_func/` folder:
 - Reusable functions for metrics computation
 - Helpers for running trackers and plotting results
 - Used across multiple notebooks
-
 feel free to clone and run these functions on youre own data to track and evaluate results!
+
 ---
 
 ## 📎 Links
