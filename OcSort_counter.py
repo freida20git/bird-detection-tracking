@@ -1,3 +1,4 @@
+from trackers.ocsort_tracker.ocsort import OCSort
 from VideoDrawings import *
 def initialize_ocsort_tracker():
     """Initialize and return the OC-SORT tracker."""
