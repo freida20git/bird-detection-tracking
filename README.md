@@ -6,25 +6,54 @@ This project explores bird detection and multi-object tracking (MOT) using YOLO 
 
 ## 🚀 How to Run the Project
 
-> detailed notebook is in main_pipeline folder but in general its a one line code!
-> main_ocsort(input_video_path, sort_output_path, model_pt_path) or main_sort(input_video_path, sort_output_path, model_pt_path)
+detailed notebook is in main_pipeline folder and it's a one line code!
+> main_ocsort(input_video_path, sort_output_path, model_pt_path)
+or
+>  main_sort(input_video_path, sort_output_path, model_pt_path)
 
-try it and you'll get a beautiful tracked output like:
+you'll get a beautiful tracked output like:
 ![image](https://github.com/user-attachments/assets/00cbdd1f-21a8-4c37-a38d-ecd121e940fb)
 
 ---
 
 ## 📁 Project Structure
 
-bird-detection-tracking/ folder structure:
--
--
--
--
+bird-detection-tracking/
+├── detection/                  # YOLO models, fine-tuning, and training notebooks
+│   ├── bestbirdsonly.pt
+│   ├── birds_training_detection.ipynb
+│
+├── tracking/                   # Tracking algorithm notebooks (OC-SORT, parameter tuning)
+│   ├── tracker.ipynb
+│   ├── func_ocsort.ipynb
+│   ├── track_and_count.ipynb
+│   ├── tuning_tracker_params.ipynb
+│
+├── main_pipeline/              # Scripts for running full detection + tracking pipeline
+│   ├── OcSORT_counter.py
+│   ├── sort_counter.py
+│   ├── VideoDrawings.py
+│   ├── UsageExample.ipynb
+│
+├── track_and_metric_func/      # Utility functions for tracking and evaluation
+│   ├── sort.py
+│   ├── func_ocsort.py
+│   ├── Tracking_metrics_functions.py
+│
+├── results/                    # Output notebooks, evaluation results, plots
+│   ├── Algorithms_inference_results.ipynb
+│   ├── Tracking_metrics.ipynb
+│   ├── model_on_videos.ipynb
+│   ├── results_tables.html
+│
+├── requirements.txt
+│
+└── README.md                   # Project overview, setup instructions, results summary
+
 
 ---
 
-## 🧠 Project Overview
+## Project Overview
 
 ###  1. YOLO Detection on Bird Videos
 We first tested pre-trained YOLO models (e.g YOLOv8x, YOLOv11n, YOLOv11x) on bird flight videos and observed that larger models perform better in both detection and tracking (Table 1 in `results/results_tables.html`).
@@ -33,10 +62,8 @@ We fine-tuned the smallest model yolov11n for bird detection to make it lightwei
 
 - **Training Script:** `detection/birds_training_detection.iypnb`  
 - **Training Data:**
-  data used could be found and downloaded from:
-  https://drive.google.com/drive/folders/1k42ZKG3CODvPaURgvAaTu9lUCB-XRrVZ?usp=sharing 
-  as well as from Roboflow: 
-  https://universe.roboflow.com/sky-sd2zq/bird_only-pt0bm/dataset/1
+  data used could be found and downloaded from: [Drive Link - model_data](https://drive.google.com/drive/folders/1k42ZKG3CODvPaURgvAaTu9lUCB-XRrVZ?usp=sharing). 
+  as well as from Roboflow: [Drive Link - roboflow_original_data](https://universe.roboflow.com/sky-sd2zq/bird_only-pt0bm/dataset/1).
 
 ---
 
@@ -49,11 +76,25 @@ We started with the DeepSORT tracker and optimized its parameters to work well o
 Since no labeled dataset for flying birds was found, we created our own ground truth by:
 - Running detections with `yolov11x.pt`
 - Manually fixing the results (e.g., ID switches)
-  for example we erased multi-objects FN detections like id 20:
+  for example we erased multi-objects False Negatives detections like id 20 object in the following frame:
   ![Screenshot (786)](https://github.com/user-attachments/assets/4773225d-9e29-4f28-b426-e9d5f01506e7)
 
 
 - **GT Annotations:** [Drive Link - GT JSONs](https://drive.google.com/drive/folders/1lPxmAk2Akj-ELYQ7_9tSIkyaokVhivvE?usp=drive_link)
+   📄 Annotation JSON Format:
+    The annotation file is a list of dictionaries, each representing a video frame with the following structure:
+    - **`frame_number`**: Integer indicating the frame index.
+    - **`objects`**: A list of detected/tracked objects in the frame, where each object includes:
+      - **`track_id`**: Unique identifier for the tracked object.
+      - **`class_id`**: Numeric class label.
+      - **`class_name`**: Human-readable class name (e.g., `"bird"`).
+      - **`confidence`**: Detection confidence score.
+      - **`bbox`**: Bounding box coordinates with:
+        - `x1`, `y1`: Top-left corner
+        - `x2`, `y2`: Bottom-right corner
+    Frames without any objects have an empty `objects` list.
+    📄 for further analysis we transform the annotations to txt MOT format in the Tracking metrics file wich has the following format:
+    <frame, track_id, x_center, y_center, width, height, confidence, class_id, visibility>
 
 ---
 ### 🧪 3. Comparison of Tracking Algorithms
@@ -83,7 +124,7 @@ Each was tested with its **optimal parameters**, and we evaluated their:
 - **Code for Evaluation:**  
   - `tracking/tracker.ipynb` and `tracking/func_ocsort.ipynb`: run all trackers  
   - `tracking/tuning_tracker_params.ipynb`: parameter optimization  
-  - `results/algorithms_inference_results.ipynb`: algorithm comparison (Table 3 in results/results_tables.html)
+  - `results/Algorithms_inference_results.ipynb`: algorithm comparison plots (Table 3 in results/results_tables.html)
 
 ---
 
@@ -92,10 +133,10 @@ Each was tested with its **optimal parameters**, and we evaluated their:
 We created a user-friendly pipeline to process any `.mp4` video and return:
 - Detection + tracking overlay video
 - Bird count
-- Option to select tracker: `SORT`, `DeepSORT`, or `OC-SORT`
+- Option to select tracker: `SORT` or `OC-SORT`
 
 - **Main Code Location:**  
-  - Folder: `main_pipeline/`  
+  - Folder: `main_pipeline/UsageExample.ipynb`  
 
 ---
 ## 📊 Performance Summary
@@ -116,12 +157,16 @@ See **Table 4** in `results/results_tables.html` for full comparison.
 | **ID Switches**| Number of identity switches across frames.                                 |
 | **CPU Inference Time** | Runtime in seconds per frame.                                |
 
+
+for a deeper theoretical understanding of tracking metrics check: [MOT metrics](https://miguel-mendez-ai.com/2024/08/25/mot-tracking-metrics).
+
 ---
 ## 🧪 Results Notebooks
 
 - `results/Tracking_metrics.ipynb` – tracking algorithm evaluation  
 - `results/Algorithms_inference_results.ipynb` – metric comparison plots  
-- `results/model_on_videos.ipynb` – OcSORT model performance per video  
+- `results/model_on_videos.ipynb` – OcSORT model performance per video
+- `results/results_tables.html` - all results summarized in tables.
 
 ---
 
@@ -131,12 +176,16 @@ Found in `track_and_metric_func/` folder:
 - Reusable functions for metrics computation
 - Helpers for running trackers and plotting results
 - Used across multiple notebooks
-  
+
+feel free to clone and run these functions on youre own data to track and evaluate results!
 ---
 
 ## 📎 Links
 
 - 📂 [Bird Videos Dataset](https://drive.google.com/drive/folders/1k6zdJ7NJX8lAgpqBogU346DZoiPj-CO5?usp=drive_link)  
 - 📂 [Ground Truth Annotations](https://drive.google.com/drive/folders/1lPxmAk2Akj-ELYQ7_9tSIkyaokVhivvE?usp=drive_link)
-
+- 📂 [Drive Link - model_data](https://drive.google.com/drive/folders/1k42ZKG3CODvPaURgvAaTu9lUCB-XRrVZ?usp=sharing). 
+ 
 ---
+
+feedback and collaboration ideas are welcome.
