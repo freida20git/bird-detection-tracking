@@ -35,7 +35,7 @@ Each directory serves a specific role:
 ## Project Overview
 
 ###  1. YOLO Detection on Bird Videos
-We first tested pre-trained YOLO models (e.g YOLOv8x, YOLOv11n, YOLOv11x) on bird flight videos and observed that larger models perform better in both detection and tracking (Table 1 in `results/results_tables.html`).
+We first tested pre-trained YOLO models (e.g YOLOv8x, YOLOv11n, YOLOv11x) on bird flight videos and observed that larger models perform better in both detection and tracking (Table 1 in `results/results_tables.pdf`).
 
 We fine-tuned the smallest model yolov11n for bird detection to make it lightweight yet accurate and good for real-time applications.
 
@@ -50,7 +50,7 @@ We fine-tuned the smallest model yolov11n for bird detection to make it lightwei
 We started with the DeepSORT tracker and optimized its parameters to work well on our custom bird videos.
 
 - **Tracking Videos:** [Drive Link - Videos](https://drive.google.com/drive/folders/1k6zdJ7NJX8lAgpqBogU346DZoiPj-CO5?usp=drive_link)  
-- **Optimized Results:** Table 2 in `results/results_tables.html`
+- **Optimized Results:** Table 2 in `results/results_tables.pdf`
 
 Since no labeled dataset for flying birds was found, we created our own ground truth by:
 - Running detections with `yolov11x.pt`
@@ -103,7 +103,7 @@ Each was tested with its **optimal parameters**, and we evaluated their:
 - **Code for Evaluation:**  
   - `tracking/tracker.ipynb` and `tracking/func_ocsort.ipynb`: run all trackers  
   - `tracking/tuning_tracker_params.ipynb`: parameter optimization  
-  - `results/Algorithms_inference_results.ipynb`: algorithm comparison plots (Table 3 in results/results_tables.html)
+  - `results/Algorithms_inference_results.ipynb`: algorithm comparison plots (Table 3 in results/results_tables.pdf)
 
 ---
 
@@ -121,7 +121,7 @@ We created a user-friendly pipeline to process any `.mp4` video and return:
 ## 📊 Performance Summary
 
 We show that our fine-tuned model + `OC-SORT` pipeline **outperforms YOLOv11n/m baselines** in detection and tracking accuracy across all 5 videos.  
-See **Table 4** in `results/results_tables.html` for full comparison.
+See **Table 4** in `results/results_tables.pdf` for full comparison.
 
 ---
 ## 📈 Evaluation Metrics Used
@@ -145,7 +145,7 @@ for a deeper theoretical understanding of tracking metrics check: [MOT metrics](
 - `results/Tracking_metrics.ipynb` – tracking algorithm evaluation  
 - `results/Algorithms_inference_results.ipynb` – metric comparison plots  
 - `results/model_on_videos.ipynb` – OcSORT model performance per video
-- `results/results_tables.html` - all results summarized in tables.
+- `results/results_tables.pdf` - all results summarized in tables.
 
 ---
 
