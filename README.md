@@ -155,7 +155,6 @@ Found in `track_and_metric_func/` folder:
 - Reusable functions for metrics computation
 - Helpers for running trackers and plotting results
 - Used across multiple notebooks
-feel free to clone and run these functions on youre own data to track and evaluate results!
 
 ---
 
