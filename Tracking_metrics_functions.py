@@ -214,15 +214,18 @@ def map_calc_coco(gt_json_path, pred_json_path, video_path,
     coco_eval.accumulate()
     coco_eval.summarize()
 
-    # Return mAP (IoU=0.5:0.95)
-    return coco_eval.stats[0]  # stats[0] is mAP@[.5:.95]
+    # Return mAP@[.5:.95] and mAP@0.5
+    return coco_eval.stats[0], coco_eval.stats[1]
+
 
 '''
 usage example:
-mAP = map_calc_coco(
+map_5095, map_50 = map_calc_coco(
     gt_json_path="/content/ground truth/gt_birds_sky.json",
     pred_json_path="/content/pred_annotation.json",
     video_path="/content/videos /birds_sky.mp4"
 )
-print(f"mAP: {mAP:.4f}")
+print(f"mAP@0.50: {map_50:.4f}")
+print(f"mAP@0.50:0.95: {map_5095:.4f}")
+
 '''
