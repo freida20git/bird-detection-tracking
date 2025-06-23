@@ -6,13 +6,10 @@ opencv-python==4.11.0.86
 opencv-python-headless==4.11.0.86
 
 # ML
-torch @                                                                                        
 torchao==0.10.0
-torchaudio @                                                                                             
 torchdata==0.11.0
 torchsummary==1.5.1
 torchtune==0.6.1
-torchvision @                                                                                               
 ultralytics==8.3.158
 ultralytics-thop==2.0.14
 
