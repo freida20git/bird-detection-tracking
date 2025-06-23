@@ -8,11 +8,11 @@ This project explores bird detection and multi-object tracking (MOT) using YOLO 
 
 detailed notebook is in main_pipeline folder and it's a one line code:
 
-> main_ocsort(input_video_path, ocsort_output_path, model_pt_path)
+        main_ocsort(input_video_path, ocsort_output_path, model_pt_path)
 
 or
 
->  main_sort(input_video_path, sort_output_path, model_pt_path)
+        main_sort(input_video_path, sort_output_path, model_pt_path)
 
 Example output:
 ![image](https://github.com/user-attachments/assets/00cbdd1f-21a8-4c37-a38d-ecd121e940fb)
@@ -62,6 +62,7 @@ Since no labeled dataset for flying birds was found, we created our own ground t
 - **GT Annotations:** [Drive Link - GT JSONs](https://drive.google.com/drive/folders/1lPxmAk2Akj-ELYQ7_9tSIkyaokVhivvE?usp=drive_link)
 
   📄 Annotation JSON Format:
+  
     The annotation file is a list of dictionaries, each representing a video frame with the following structure:
     - **`frame_number`**: Integer indicating the frame index.
     - **`objects`**: A list of detected/tracked objects in the frame, where each object includes:
@@ -78,7 +79,7 @@ Since no labeled dataset for flying birds was found, we created our own ground t
   
      Each detection includes:
   
-        frame, track_id, x_center, y_center, width, height, confidence, class_id, visibility.
+     > frame, track_id, x_center, y_center, width, height, confidence, class_id, visibility.
 
 ---
 ### 🧪 3. Comparison of Tracking Algorithms
