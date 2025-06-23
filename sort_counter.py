@@ -28,7 +28,6 @@ def process_sort_detections(results):
     
     return np.array(detections_array) if detections_array else np.empty((0, 5)), detection_objects
 
-
 def main_sort(input_path, output_path, model_name):
     """Main function for SORT tracking."""
     cap, width, height, fps = Detection.initialize_video_objects(input_path)
