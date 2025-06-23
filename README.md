@@ -60,7 +60,8 @@ Since no labeled dataset for flying birds was found, we created our own ground t
 
 
 - **GT Annotations:** [Drive Link - GT JSONs](https://drive.google.com/drive/folders/1lPxmAk2Akj-ELYQ7_9tSIkyaokVhivvE?usp=drive_link)
-   📄 Annotation JSON Format:
+
+  📄 Annotation JSON Format:
     The annotation file is a list of dictionaries, each representing a video frame with the following structure:
     - **`frame_number`**: Integer indicating the frame index.
     - **`objects`**: A list of detected/tracked objects in the frame, where each object includes:
@@ -74,7 +75,9 @@ Since no labeled dataset for flying birds was found, we created our own ground t
     Frames without any objects have an empty `objects` list.
     
     📄 for further analysis we transform the annotations to .txt MOT format in the Tracking metrics file which has the following format:
+  
      Each detection includes:
+  
         frame, track_id, x_center, y_center, width, height, confidence, class_id, visibility.
 
 ---
