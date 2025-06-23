@@ -72,8 +72,10 @@ Since no labeled dataset for flying birds was found, we created our own ground t
         - `x1`, `y1`: Top-left corner
         - `x2`, `y2`: Bottom-right corner
     Frames without any objects have an empty `objects` list.
-    📄 for further analysis we transform the annotations to txt MOT format in the Tracking metrics file wich has the following format:
-    <frame, track_id, x_center, y_center, width, height, confidence, class_id, visibility>
+    
+    📄 for further analysis we transform the annotations to .txt MOT format in the Tracking metrics file which has the following format:
+     Each detection includes:
+        frame, track_id, x_center, y_center, width, height, confidence, class_id, visibility.
 
 ---
 ### 🧪 3. Comparison of Tracking Algorithms
