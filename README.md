@@ -7,7 +7,7 @@ This project explores bird detection and multi-object tracking (MOT) using YOLO 
 ## 🚀 How to Run the Project
 
 detailed notebook is in main_pipeline folder and it's a one line code!
-> main_ocsort(input_video_path, sort_output_path, model_pt_path)
+> main_ocsort(input_video_path, ocsort_output_path, model_pt_path)
 or
 >  main_sort(input_video_path, sort_output_path, model_pt_path)
 
