@@ -51,6 +51,9 @@ def run_ocsort_save_json(model_pt_file, video_path, output_video_path, json_outp
     tracking_results = []
 
     cap = cv2.VideoCapture(video_path)
+    if not cap.isOpened():
+        raise FileNotFoundError(f"❌ Could not open video file: {video_path}")
+
     width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     fps = cap.get(cv2.CAP_PROP_FPS)
