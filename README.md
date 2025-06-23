@@ -6,7 +6,7 @@ This project explores bird detection and multi-object tracking (MOT) using YOLO 
 
 ## 🚀 How to Run the Project
 
-detailed notebook is in main_pipeline folder and it's a one line code:
+Detailed notebook is in `main_pipeline/UsageExample.ipynb` folder and it's a one line code:
 
         main_ocsort(input_video_path, ocsort_output_path, model_pt_path)
 
@@ -75,10 +75,8 @@ Since no labeled dataset for flying birds was found, we created our own ground t
         - `x2`, `y2`: Bottom-right corner
     Frames without any objects have an empty `objects` list.
     
-    📄 for further analysis we transform the annotations to .txt MOT format in the Tracking metrics file which has the following format:
-  
-     Each detection includes:
-  
+    📄 For further analysis we transform the annotations to .txt MOT format using the convert_json_to_mot function in `results/Tracking_metrics.ipynb` file.
+     MOT annotations format:
      > frame, track_id, x_center, y_center, width, height, confidence, class_id, visibility.
 
 ---
