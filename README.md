@@ -162,7 +162,7 @@ Found in `track_and_metric_func/` folder:
 
 - 📂 [Bird Videos Dataset](https://drive.google.com/drive/folders/1k6zdJ7NJX8lAgpqBogU346DZoiPj-CO5?usp=drive_link)  
 - 📂 [Ground Truth Annotations](https://drive.google.com/drive/folders/1lPxmAk2Akj-ELYQ7_9tSIkyaokVhivvE?usp=drive_link)
-- 📂 [Drive Link - model_data](https://drive.google.com/drive/folders/1k42ZKG3CODvPaURgvAaTu9lUCB-XRrVZ?usp=sharing). 
+- 📂 [Data used for fine-tuning model](https://drive.google.com/drive/folders/1k42ZKG3CODvPaURgvAaTu9lUCB-XRrVZ?usp=sharing). 
  
 ---
 
