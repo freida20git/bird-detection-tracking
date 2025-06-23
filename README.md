@@ -22,7 +22,6 @@ Example output:
 ## 📁 Project Structure
 
 This repository is organized as follows:
-Each directory serves a specific role:
 - `detection/`: Contains YOLOv11n training notebooks and model.
 - `tracking/`: Exploration and evaluation of tracking algorithms.
 - `main_pipeline/`: Scripts for combining detection and tracking into a unified user-friendly pipeline.
