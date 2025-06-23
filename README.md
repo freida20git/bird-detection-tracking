@@ -4,14 +4,23 @@ This project explores bird detection and multi-object tracking (MOT) using YOLO 
 
 ---
 
+## 🚀 How to Run the Project
+
+> detailed notebook is in main_pipeline folder but in general its a one line code!
+> main_ocsort(input_video_path, sort_output_path, model_pt_path) or main_sort(input_video_path, sort_output_path, model_pt_path)
+
+try it and you'll get a beautiful tracked output like:
+![image](https://github.com/user-attachments/assets/00cbdd1f-21a8-4c37-a38d-ecd121e940fb)
+
+---
+
 ## 📁 Project Structure
 
 bird-detection-tracking/ folder structure:
-TrackANDcount
-inference and results
-model
-notebooks
-track and metric function files
+-
+-
+-
+-
 
 ---
 
@@ -40,6 +49,9 @@ We started with the DeepSORT tracker and optimized its parameters to work well o
 Since no labeled dataset for flying birds was found, we created our own ground truth by:
 - Running detections with `yolov11x.pt`
 - Manually fixing the results (e.g., ID switches)
+  for example we erased multi-objects FN detections like id 20:
+  ![Screenshot (786)](https://github.com/user-attachments/assets/4773225d-9e29-4f28-b426-e9d5f01506e7)
+
 
 - **GT Annotations:** [Drive Link - GT JSONs](https://drive.google.com/drive/folders/1lPxmAk2Akj-ELYQ7_9tSIkyaokVhivvE?usp=drive_link)
 
@@ -57,6 +69,11 @@ Each was tested with its **optimal parameters**, and we evaluated their:
 
 - Tracking accuracy (IDF1, MOTA, MOTP, ID_switches)
 - Runtime (CPU inference time)
+
+  for example:
+  ![image](https://github.com/user-attachments/assets/777e5568-6880-4c85-9c71-8f11065aa014)
+  more plots can be seen in `results/algorithms_inference_results.ipynb`.
+
 
 **Results:**
 - **OC-SORT** and **DeepSORT** perform best.
@@ -114,14 +131,7 @@ Found in `track_and_metric_func/` folder:
 - Reusable functions for metrics computation
 - Helpers for running trackers and plotting results
 - Used across multiple notebooks
-
----
-
-## 🚀 How to Run the Project
-
-> *(Instructions to be added by collaborator)*  
-To use the detection and tracking pipeline on your own `.mp4` video:
-
+  
 ---
 
 ## 📎 Links
